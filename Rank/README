@@ -1,7 +1,32 @@
-Amazon Code Exercise: Find the sum of the most common integer.
-Assumptions: 
-	1. There is no invalid inputs which has the same number of common values (e.g, {1, 1, 2, 2}) or NULL
-	2. Array size(n) is not bigger than Integer.MAX_VALUE or maximum memory
-	3. Exception handling is omitted.
+-------------------------- Amazon Code Excercise --------------------------
+------------------------------ Sebastian Kim ------------------------------
 
-@author: Sebastian Kim
+<Problem statement>
+Given an array of n integers, find the sum of the most common integer.
+Example:  
+(2,4,5,6,4) – return 8 (as 4+4 = 8) .
+(1,2,1,3,1) – return 3 (as 1+1+1 = 3).
+
+
+<Solution>
+
+1. Optimized for runtime
+The minimum possible runtime cost is O(n) because it should look at all the numbers in the variable at least once.
+My solution is using a hash map <number, count> to store countings of each number in the array.
+I implemented the function which getting maximum value in the hashmap within the iteration of pushing numbers into the hashmap,
+so all the work can be done with just one loop pass.
+
+This solution requires O(n) extra memory space to store the hash map.
+
+
+2. Optimized for space
+This solution sorts the array using quicksort(In memory sorting), and gets the maximum consequent occurence of numbers.
+
+As this uses a quicksort, thus the worst case running time will be O(n^2) and average case will be O(nlogn). 
+On the other hand, this uses just few bytes of extra memory space for few variables.
+
+
+Assumptions: 
+	1. There is no invalid inputs which has the same number of common values (e.g, {1, 1, 2, 2}) or NULL.
+ 	2. Array size(n) is not bigger than Integer.MAX_VALUE or maximum memory
+	3. Exception handling is omitted.
