@@ -1,0 +1,7 @@
+Amazon Code Exercise: Find the sum of the most common integer.
+Assumptions: 
+	1. There is no invalid inputs which has the same number of common values (e.g, {1, 1, 2, 2}) or NULL
+	2. Array size(n) is not bigger than Integer.MAX_VALUE or maximum memory
+	3. Exception handling is omitted.
+
+@author: Sebastian Kim
