@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Facebook Login / Stream Demo</title>
+    <meta name="description" content="Facebook Login / Stream Demo">
+    <meta name="Keywords" content="Facebook API, Login, Stream"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .facebook-user, #some-form {}
+        #some-form label {display:block;}
+    </style>
+</head>
+<body>
+    <div id="fb-root"><!-- --></div>
+    
+    <!-- Login Button -->
+    <a href="javascript:void(0);" id="facebook-login">
+        <img src="facebook.png" alt="Login with Facebook" />
+    </a>
+    <!-- // Login Button -->
+    
+    <!-- User info -->
+    <div class="facebook-user">
+        <div class="user-photo"><!-- FB user image --></div>
+        <div class="user-info">
+            <div class="info-name"><!-- FB user name --></div>
+            <div class="info-text">You have logged in via Facebook.</div>
+        </div>
+    </div>
+    <!-- // User info -->
+    
+    <!-- Form -->
+    <form id="some-form">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" size="20" maxlength="64" value="" />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" size="20" maxlength="64" value="" />
+        </div>
+        <div>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" cols="20" rows="5">Something to say</textarea>
+        </div>
+        <div>
+            <input type="submit" />
+        </div>
+    </form>
+    <!-- // Form -->
+    
+    <script>
+        
+    </script>
+    <script src="facebook_login.js"></script>
+</body>  
+</html>  
