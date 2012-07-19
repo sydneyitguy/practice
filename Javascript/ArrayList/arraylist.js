@@ -1,5 +1,6 @@
 /**
  * Javascrip ArrayList
+ * 
  * @author: Sebastian Kim
  */
 var ArrayList = function() {

@@ -1,3 +1,9 @@
+/**
+ * Facebook Friends Statistics
+ * 
+ * @author Sebastian Kim
+ */
+
 // Global for the post
 var gender = {female: 0, male: 0};
 var axis = [], frequency = [];

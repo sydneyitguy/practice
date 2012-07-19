@@ -1,3 +1,9 @@
+/**
+ * Facebook Login API Wrapper
+ * 
+ * @author Sebastian Kim
+ */
+
 // Load the SDK Asynchronously
 (function(d){
     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];

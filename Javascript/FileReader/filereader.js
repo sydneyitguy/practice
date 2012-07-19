@@ -1,5 +1,6 @@
 /**
- * HTML5 FileReader API
+ * HTML5 FileReader API Wrapper
+ * 
  * @author: Sebastian Kim
  */
 function FileReaderAPI(inputs) {
@@ -31,6 +32,7 @@ function FileReaderAPI(inputs) {
 				}
 			}
 			
+			// FIXME: Whatever..
 			info.push("<li><strong>", f.name, "<"+"/strong> (", (f.type || "n/a"), ") - ", f.size, " bytes<"+"/li>");
 			reader.readAsText(f);
 		}
