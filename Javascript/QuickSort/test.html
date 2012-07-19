@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Javascript QuickSort Test</title>
+  <link rel="stylesheet" href="qunit/qunit-1.9.0.css">
+</head>
+<body>
+  <div id="qunit"><!-- Unit Test Results --></div>
+  <hr/>
+  <h2>Benchmark</h2>
+  <pre id="benchmark"><!-- Benchmark Results --></pre>
+
+  <script src="qunit/qunit-1.9.0.js"></script>
+  <script type="text/javascript" src="benchmark/benchmark.js" charset="utf-8"></script>
+  <script src="Array.quicksort.js"></script>
+  
+  <script type="text/javascript">
+    // Generate a random array
+    function generateRandomArray(length, range) {
+      var random = [];
+      for(var i = 0; i < length; i++) {
+        random[i] = parseInt(Math.random() * range);
+      }
+
+      return random;
+    }
+
+    // Default sort() function sorts by alphabetical order
+    function sortNumber(a,b) { 
+      return a - b; 
+    }
+
+    /**
+     * Unit Tests
+     * -------------------------------------------------- */
+    test( "Property: Array.swap defined", function() {
+      ok('swap' in Array.prototype, "Pass" );
+    });
+
+    test( "Property: Array.quicksort defined", function() {
+      ok('quicksort' in Array.prototype, "Pass" );
+    });
+
+    // Sort test - 5 times with array size 100
+    for(var n = 0; n < 5; n++) {
+      test( "Sort test on a random array", function() {
+        random = generateRandomArray(100, 100);
+        copy = random.slice(0); // deep copy
+  
+        // Sort
+        random.quicksort();
+        copy.sort(sortNumber);
+        
+        deepEqual(random, copy, "All elements should be the same");
+      });
+    }
+
+    /**
+     * Benchmarks
+     * -------------------------------------------------- */
+    Benchmark.STDOUT = document.getElementById('benchmark');
+    
+    var arrays = [];
+    var copies = [];
+    var COUNT = 10000;
+    for(var i = 0; i < COUNT; i++) {
+      random = generateRandomArray(100, 100);
+      arrays.push(random);
+      copies.push(random.slice(0));
+    }
+    Benchmark.benchmark({
+      QuickSort : function() {
+        for(var i = 0; i < COUNT; i++) {
+          arrays[i].quicksort();
+        }
+      },
+      NativeSort : function() {
+        for(var i = 0; i < COUNT; i++) {
+          arrays[i].sort();
+        }
+      },
+    });
+  </script>
+</body>
+</html>
