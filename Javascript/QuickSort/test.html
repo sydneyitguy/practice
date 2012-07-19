@@ -20,7 +20,7 @@
     function generateRandomArray(length, range) {
       var random = [];
       for(var i = 0; i < length; i++) {
-        random[i] = parseInt(Math.random() * range);
+        random[i] = Math.floor(Math.random() * range);
       }
 
       return random;
@@ -42,44 +42,62 @@
       ok('quicksort' in Array.prototype, "Pass" );
     });
 
-    // Sort test - 5 times with array size 100
-    for(var n = 0; n < 5; n++) {
-      test( "Sort test on a random array", function() {
-        random = generateRandomArray(100, 100);
+    var LENGTH = 100;
+    var RANGE = 10000;
+
+    // QuickSort test
+    for(var n = 0; n < 3; n++) {
+      test( "Quicksort on random array", function() {
+        random = generateRandomArray(LENGTH, RANGE);
         copy = random.slice(0); // deep copy
   
-        // Sort
-        random.quicksort();
-        copy.sort(sortNumber);
-        
-        deepEqual(random, copy, "All elements should be the same");
+        deepEqual(copy.quicksort(), random.sort(sortNumber), "All elements should be the same");
       });
     }
+
+    // QuickSort(Algorithm2) test
+    for(var n = 0; n < 3; n++) {
+      test( "Quicksort(Algorithm2) on random array", function() {
+        random = generateRandomArray(LENGTH, RANGE);
+        copy = random.slice(0);
+
+        deepEqual(copy.quicksort2(), random.sort(sortNumber), "All elements should be the same");
+      });
+    }
+
 
     /**
      * Benchmarks
      * -------------------------------------------------- */
     Benchmark.STDOUT = document.getElementById('benchmark');
     
-    var arrays = [];
+    var randoms = [];
     var copies = [];
+    var copies2 = [];
     var COUNT = 10000;
     for(var i = 0; i < COUNT; i++) {
-      random = generateRandomArray(100, 100);
-      arrays.push(random);
+      random = generateRandomArray(LENGTH, RANGE);
+      randoms.push(random);
       copies.push(random.slice(0));
+      copies2.push(random.slice(0));
     }
+
     Benchmark.benchmark({
-      QuickSort : function() {
-        for(var i = 0; i < COUNT; i++) {
-          arrays[i].quicksort();
-        }
-      },
       NativeSort : function() {
         for(var i = 0; i < COUNT; i++) {
-          arrays[i].sort();
+          randoms[i].sort(sortNumber);
         }
       },
+      QuickSort : function() {
+        for(var i = 0; i < COUNT; i++) {
+          copies[i].quicksort();
+        }
+      },
+      QuickSort2 : function() {
+        for(var i = 0; i < COUNT; i++) {
+          copies2[i].quicksort2();
+        }
+      }
     });
   </script>
 </body>
