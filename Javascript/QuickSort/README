@@ -1,0 +1,29 @@
+Benchmark Results on: Intel i5 1.7GHz / 4GB 1333MHz DDR3
+
+Chrome/20.0.1132.57
+---------------------------
+     NativeSort: (   0.4150)
+      QuickSort: (   0.8830)
+     QuickSort2: (   0.1280)
+-------------- total: 1.4260
+
+Firefox/12.0
+---------------------------
+     NativeSort: (   1.0870)
+      QuickSort: (   0.4450)
+     QuickSort2: (   0.1450)
+-------------- total: 1.6770
+
+Safari/5.1.7(7534.57.2)
+--------------------------- 
+     NativeSort: (   0.1180)
+      QuickSort: (   0.7780)
+     QuickSort2: (   0.1620)
+-------------- total: 1.0580
+
+Opera/9.80
+---------------------------
+     NativeSort: (   0.6400)
+      QuickSort: (   1.9640)
+     QuickSort2: (   0.3940)
+-------------- total: 2.9980
