@@ -1,0 +1,23 @@
+<head>
+<style type="text/css">
+body { margin: 0; padding: 10px; font-size:14px; font-family: Helvetica, tahoma, verdana; }
+</style>
+<script type="text/javascript">
+	function search() {
+		var fileList = '';
+		var fileArray = chrome.extension.getBackgroundPage().selectedFile;
+		
+		for(var i=0; i<fileArray.length; i++) {
+			fileList += '<li><a href="' + fileArray[i] + '" target="_blank">' + fileArray[i] + '</a><br/>';
+			fileList += 'wget -c ' + fileArray[i] + '</li>';
+		}
+		
+		if (fileArray && fileList != '') {
+			document.getElementById('filelist').innerHTML = '<h4>Total ' + fileArray.length + ' Media File(s) Found:</h4><ol>' + fileList + '</ol>';
+		}
+	};
+</script>
+</head>
+<body onload="search()">
+	<div id="filelist"></div>
+</body>

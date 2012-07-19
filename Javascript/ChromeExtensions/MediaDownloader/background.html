@@ -1,0 +1,43 @@
+<script type="text/javascript">
+// Global accessor that the popup uses.
+var files = {};
+var selectedFile = Array();
+var selectedId = null;
+
+function updatefile(tabId) {
+  chrome.tabs.sendRequest(tabId, {}, function(file) {
+    files[tabId] = file;
+    console.log(file);
+    if (!file || file.length < 1) {
+      chrome.pageAction.hide(tabId);
+    } else {
+      chrome.pageAction.show(tabId);
+      if (selectedId == tabId) {
+        updateSelected(tabId);
+      }
+    }
+  });
+}
+
+function updateSelected(tabId) {
+  selectedFile = files[tabId];
+  if (selectedFile)
+    chrome.pageAction.setTitle({tabId:tabId, title:'Media Files'});
+}
+
+chrome.tabs.onUpdated.addListener(function(tabId, change, tab) {
+  if (change.status == "complete") {
+    updatefile(tabId);
+  }
+});
+
+chrome.tabs.onSelectionChanged.addListener(function(tabId, info) {
+  selectedId = tabId;
+  updateSelected(tabId);
+});
+
+// Ensure the current selected tab is set up.
+chrome.tabs.getSelected(null, function(tab) {
+  updatefile(tab.id);
+});
+</script>

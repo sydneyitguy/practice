@@ -1,0 +1,16 @@
+{
+	"name": "Media file downloader",
+	"version": "2.0",
+	"description": "Finds media files in the web page you're on, provide download links",
+	"icons": { "128": "icon_128.png" },
+	"background_page": "background.html",
+	"content_scripts": [
+		{ "matches": ["http://*/*"], "js": ["mdown_content_script.js"] }
+	],
+	"permissions": ["tabs"],
+	"page_action": {
+		"default_name": "Show media files",
+		"default_icon": "icon_19.png",
+		"popup": "popup.html"
+	}
+}
