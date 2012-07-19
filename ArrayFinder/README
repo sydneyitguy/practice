@@ -1,7 +1,0 @@
-Find Arrays
-
-- Implement a method that given two integer arrays as parameters that will find the starting index in the haystack parameter where the needle parameter.
-public int findArrays(int[] haystack, int[] needle);
-
-- Implement tests for this method. These tests should make sure the method returns the correct results under all circumstances and all possible inputs.
-E.g.: [4,9,3,7,8], [3,7] should return 2

@@ -1,0 +1,21 @@
+Demo - PHP Assets Pipelining / Caching
+Compress assets into a single file to reduce the number of HTTP request and the size
+
+ - General usage: 
+      $AssetsCache->printJS('group_name', $files_array)
+      $AssetsCache->printCSS('group_name', $files_array, <media type>)
+ - Assets can be grouped with a unique group name
+ - Expiry can be set either 'footprint'(automatic) or an integer(seconds)
+ 
+
+@author    Sebastian.Kim <sydneyitguy@gmail.com>
+
+More..
+ - cacheKey and type need to be specified to identify the group of assets
+ - Assets need to be store on {$cacheUrl}/{$type}/ (e.g. /assets/js/)
+ - Expiry can be set either 'footprint' or an integer(seconds)
+     - Footprint method flushes cache if the file is modified, but the average running time can be slow
+     - Time method would have faster average running time, but is not refreshed automatically if the files modified
+ 
+ - Known Issues
+     - JSMin library is not perfect for every javascript files, thus the output need to be checked
