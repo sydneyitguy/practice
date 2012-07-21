@@ -37,7 +37,7 @@ function quicksort(A, p, q) {
 }
 
 Array.prototype.quicksort = function() {
-  return quicksort(this, 0, this.length);
+  return quicksort(this, 0, this.length - 1);
 }
 
 /**
@@ -45,15 +45,15 @@ Array.prototype.quicksort = function() {
  * -------------------------------------------------- */
 function partition2(A, p, q, r) {
   var pivot = A[r];
-  A.swap(r, q - 1);
+  A.swap(r, p);
   var i = p;
 
-  for(var j = p; j < q - 1; ++j) {
+  for(var j = p + 1; j <= q; ++j) {
     if(A[j] <= pivot) {
-      A.swap(i++, j);
+      A.swap(++i, j);
     }
   }
-  A.swap(q - 1, i);
+  A.swap(p, i);
 
   return i;
 }
@@ -61,10 +61,10 @@ function partition2(A, p, q, r) {
 
 function quicksort2(A, p, q)
 {
-  if(p < q - 1) {
+  if(p < q) {
     var r = Math.floor((p + q) / 2);
     r = partition2(A, p, q, r);
-    quicksort2(A, p, r);
+    quicksort2(A, p, r - 1);
     quicksort2(A, r + 1, q);
   }
 
@@ -72,5 +72,5 @@ function quicksort2(A, p, q)
 }
 
 Array.prototype.quicksort2 = function() {
-  return quicksort2(this, 0, this.length);
+  return quicksort2(this, 0, this.length - 1);
 }
