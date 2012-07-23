@@ -14,7 +14,8 @@
   <script src="qunit/qunit-1.9.0.js"></script>
   <script type="text/javascript" src="benchmark/benchmark.js" charset="utf-8"></script>
   <script src="Array.quicksort.js"></script>
-  
+  <script src="Array.mergesort.js"></script>
+
   <script type="text/javascript">
     // Generate a random array
     function generateRandomArray(length, range) {
@@ -34,52 +35,61 @@
     /**
      * Unit Tests
      * -------------------------------------------------- */
-    test( "Property: Array.swap defined", function() {
-      ok('swap' in Array.prototype, "Pass" );
+    test( "QuickSort: Array size = 1", function() {
+      var a = [3];
+      deepEqual(a.quicksort(), [3], "Should return itself");
     });
 
-    test( "Property: Array.quicksort defined", function() {
-      ok('quicksort' in Array.prototype, "Pass" );
+    test( "QuickSort(Algorithm2): Array size = 1", function() {
+      var a = [4];
+      deepEqual(a.quicksort(), [4], "Should return itself");
+    });
+
+    test( "MergeSort: Array size = 1", function() {
+      var a = [5];
+      deepEqual(a.quicksort(), [5], "Should return itself");
     });
 
     var LENGTH = 1000;
     var RANGE = 10000;
 
     // QuickSort test
-    for(var n = 0; n < 3; n++) {
-      test( "Quicksort on random array", function() {
-        random = generateRandomArray(LENGTH, RANGE);
-        copy = random.slice(0); // deep copy
-  
-        deepEqual(copy.quicksort(), random.sort(sortNumber), "All elements should be the same");
-      });
-    }
+    test( "QuickSort: Random array", function() {
+      random = generateRandomArray(LENGTH, RANGE);
+      copy = random.slice(0); // deep copy
+
+      deepEqual(copy.quicksort(), random.sort(sortNumber), "All elements should be the same");
+    });
 
     // QuickSort(Algorithm2) test
-    for(var n = 0; n < 3; n++) {
-      test( "Quicksort(Algorithm2) on random array", function() {
-        random = generateRandomArray(LENGTH, RANGE);
-        copy = random.slice(0);
+    test( "QuickSort(Algorithm2): Random array", function() {
+      random = generateRandomArray(LENGTH, RANGE);
+      copy = random.slice(0);
 
-        deepEqual(copy.quicksort2(), random.sort(sortNumber), "All elements should be the same");
-      });
-    }
+      deepEqual(copy.quicksort2(), random.sort(sortNumber), "All elements should be the same");
+    });
 
+    // MergeSort test
+    test( "MergeSort: Random array", function() {
+      random = generateRandomArray(LENGTH, RANGE);
+      copy = random.slice(0);
+
+      deepEqual(copy.mergesort(), random.sort(sortNumber), "All elements should be the same");
+    });
 
     /**
      * Benchmarks
      * -------------------------------------------------- */
     Benchmark.STDOUT = document.getElementById('benchmark');
-    
-    var randoms = [];
-    var copies = [];
-    var copies2 = [];
+
+    var randoms = [], copies1 = [], copies2 = [], copies3 = [];
     var COUNT = 1000;
     for(var i = 0; i < COUNT; i++) {
       random = generateRandomArray(LENGTH, RANGE);
       randoms.push(random);
-      copies.push(random.slice(0));
+      copies1.push(random.slice(0));
       copies2.push(random.slice(0));
+      copies3.push(random.slice(0));
     }
 
     Benchmark.benchmark({
@@ -90,12 +100,17 @@
       },
       QuickSort : function() {
         for(var i = 0; i < COUNT; i++) {
-          copies[i].quicksort();
+          copies1[i].quicksort();
         }
       },
       QuickSort2 : function() {
         for(var i = 0; i < COUNT; i++) {
           copies2[i].quicksort2();
+        }
+      },
+      MergeSort : function() {
+        for(var i = 0; i < COUNT; i++) {
+          copies3[i].mergesort();
         }
       },
     });
