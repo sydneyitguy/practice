@@ -1,3 +1,9 @@
+/**
+ * Binary Search Tree Javascript Implementation
+ *
+ * @author Sebastian Kim
+ */
+
 function TreeNode(key) {
   this.key = key;
   this.left = null;
