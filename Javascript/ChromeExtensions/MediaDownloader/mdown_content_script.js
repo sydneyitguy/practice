@@ -1,3 +1,9 @@
+/**
+ * Media file grabber
+ *
+ * @author Sebastian Kim
+ */
+
 /* The background page is asking us to find an address on the page. */
 if (window == top) {
 	chrome.extension.onRequest.addListener(function(req, sender, sendResponse) {
