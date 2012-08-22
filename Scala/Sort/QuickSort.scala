@@ -1,10 +1,26 @@
 object QuickSort {
   def main(args: Array[String]) {
-    var arr = Array(5, 7, 3, 4, 6, 8, 10)
+    var arr = Array(5, 7, 3, 4, 10, 6, 8)
+    println(get_sorted(arr).mkString(", "))
+    println(arr.mkString(", "))
     sort(arr)
     println(arr.mkString(", "))
   }
 
+  // Space: O(n), actual array is unchanged
+  def get_sorted(xs: Array[Int]): Array[Int] = {
+    if (xs.length <= 1) xs
+    else {
+      val pivot = xs(xs.length / 2)
+      Array.concat(
+        get_sorted(xs.filter(pivot >)),
+                   xs.filter(pivot ==),
+        get_sorted(xs.filter(pivot <))
+      )
+    }
+  }
+
+  // In-place (loose def), modifying argument array
   def sort(array: Array[Int]) {
     def swap(i: Int, j: Int) {
       val t = array(i)
