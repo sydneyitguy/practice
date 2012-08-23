@@ -1,4 +1,7 @@
-# Given a series of numbers as the input, the last one as the result. Use the rest numbers to calculate the result,only +, -, *, / are allowed. The order of the input cannot be changed. If there is an equation, print it; or print "no equation". If more than one solution, any working equation is fine.
+# Given a series of numbers as the input, the last one as the result.
+# Use the rest numbers to calculate the result,only +, -, *, / are allowed.
+# The order of the input cannot be changed. If there is an equation, print it; or print "no equation".
+# If more than one solution, any working equation is fine.
 # example:
 # input: 2, 3, 1, 4
 # output: 2+3-1 = 4
@@ -6,7 +9,7 @@
 # Fizzbuzz solution
 # @author Sebastian Kim
 
-def findEquation(arr)
+def find_equation(arr)
   result = arr.pop
   operators = ['+', '-', '*', '/'].repeated_permutation(arr.length - 1)
   operators.each do |op|
