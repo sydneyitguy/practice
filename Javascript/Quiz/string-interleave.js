@@ -13,6 +13,7 @@ function to_a(s) {
   return s;
 }
 
+// O(n), but fail if a and b have some common characters
 function isInterleaved(a, b, c) {
   a = to_a(a), b = to_a(b), c = to_a(c);
   for(var i = 0; i < c.length; i++) {
@@ -27,11 +28,11 @@ function isInterleaved(a, b, c) {
   return true;
 }
 
-console.log(isInterleaved('abcd', 'xyz', 'axybczd'));
-console.log(isInterleaved('bac', 'acd', 'bacadc'));
+console.log(isInterleaved('abcd', 'xyz', 'axybczd')); // True
+console.log(isInterleaved('bac', 'acd', 'bacadc')); // False
 
 
-// not an O(n) solution though..
+// not O(n), but can handle duplications
 function isInterleavedIter(a, b, c, branch) {
   for(var i = 0; i < c.length; i++) {
     if(a[0] == b[0] && !branch) {
@@ -55,5 +56,5 @@ function isInterleaved(a, b, c) {
   return isInterleavedIter(a, b, c, false);
 }
 
-console.log(isInterleaved('abcd', 'xyz', 'axybczd'));
-console.log(isInterleaved('bac', 'acd', 'bacadc'));
+console.log(isInterleaved('abcd', 'xyz', 'axybczd')); // True
+console.log(isInterleaved('bac', 'acd', 'bacadc')); // True
