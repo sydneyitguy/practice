@@ -28,8 +28,11 @@ function isInterleaved(a, b, c) {
   return true;
 }
 
-console.log(isInterleaved('abcd', 'xyz', 'axybczd')); // True
-console.log(isInterleaved('bac', 'acd', 'bacadc')); // False
+console.log(isInterleaved('abcd', 'xyz', 'axybczd')); // true
+console.log(isInterleaved('bac', 'acd', 'bacadc')); // false
+console.log(isInterleaved('abc' , 'abc' ,'aabbcc')); // true
+console.log(isInterleaved('abc', 'abbc', 'ababcc')); // false
+console.log('------------------------');
 
 
 // not O(n), but can handle duplications
@@ -51,10 +54,13 @@ function isInterleavedIter(a, b, c, branch) {
   return true;
 }
 
-function isInterleaved(a, b, c) {
+function isInterleaved2(a, b, c) {
   a = to_a(a), b = to_a(b), c = to_a(c);
   return isInterleavedIter(a, b, c, false);
 }
 
-console.log(isInterleaved('abcd', 'xyz', 'axybczd')); // True
-console.log(isInterleaved('bac', 'acd', 'bacadc')); // True
+console.log(isInterleaved2('abcd', 'xyz', 'axybczd')); // true
+console.log(isInterleaved2('bac', 'acd', 'bacadc')); // true
+console.log(isInterleaved2('abc' , 'abc' ,'aabbcc')); // true
+console.log(isInterleaved2('abc', 'abbc', 'ababcbc')); // true
+console.log('------------------------');
