@@ -13,6 +13,9 @@ while($row1 && $row2) {
 		if($row1[0] == $row2[0])
 			echo "$row1[0], $row1[1], $row1[2], $row2[1], $row2[2]\n";
 		$row2 = fgetcsv($file2);
-	}	
+	}
 }
+
+fclose($file1);
+fclose($file2);
 ?>
