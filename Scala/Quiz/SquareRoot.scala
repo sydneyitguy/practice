@@ -26,6 +26,7 @@ object SquareRoot {
     (guess + x / guess) / 2
   }
 
+  // FIXME: wrong
   def isGoodEnough(guess: Double, x: Double) =
     (guess * guess - x).abs < math.pow(0.1, toFixed)
 }

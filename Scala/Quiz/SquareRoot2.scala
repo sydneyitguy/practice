@@ -11,9 +11,9 @@ object SquareRoot2 {
 
   def sqrt(x: Double) = fixedPoint(y => (y + x/y) / 2)(1.0)
 
-  def fixedPoint(f: Double => Double)(firstGuess: Double) = {
+  def fixedPoint(improve: Double => Double)(firstGuess: Double) = {
     def iterate(guess: Double): Double = {
-      val next = f(guess)
+      val next = improve(guess)
       println(next)
       if(isCloseEnough(guess, next)) next else iterate(next)
     }
