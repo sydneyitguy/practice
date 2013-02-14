@@ -1,3 +1,6 @@
+# Circular Queue using array
+# @author: Sebastian Kim
+
 class CircularQueue
   def initialize(max_length)
     @max_length = max_length
