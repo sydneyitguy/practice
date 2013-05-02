@@ -6,7 +6,7 @@
 
 @AJAXPagination = ( ->
   $cache = {} # selector cache
-  _currentPage = 1
+  _currentPage = null
   _totalPage = null
   _config =
     url: ''
@@ -34,6 +34,7 @@
       _load(_currentPage)
 
   _showCurrentPage = ->
+    $cache.pagination.find('a[class^="page-"]').hide()
     _bindButton('next') if _totalPage > _currentPage
     _bindButton('prev') if _currentPage > 1
 
@@ -42,9 +43,6 @@
     # show current page
     $cache.container.find('.g-page-' + _currentPage).fadeIn()
     _config.callback() unless _config.callback is undefined
-
-  _process = (totalPage, items) ->
-
 
   _load = (page) ->
     if $cache.container.find('.g-page-' + _currentPage).length > 0
@@ -65,5 +63,7 @@
     _config = config
     $cache.container = $(_config.container)
     $cache.pagination = $(_config.pagination)
+    _currentPage = 1
+    _totalPage = null
     _load(1)
 )()
