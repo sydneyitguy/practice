@@ -3,13 +3,16 @@
 ### Example settings
 
 HTML:
+```html
     <div id="gallery"></div>
     <div id="gallery-pagination">
         <a class="page-prev">&lsaquo; Previous</a>
         <a class="page-next">Next &rsaquo;</a>
     </div>
+```
 
 OnLoad Javascript:
+```js
     $(function() {
       AJAXPagination.init({
         url: '/gallery.json',
@@ -35,8 +38,10 @@ OnLoad Javascript:
         }
       });
     });
+```
 
 JSON format:
+```json
     {
       "total_page": 35,
       "photos": [{
@@ -45,3 +50,4 @@ JSON format:
          "original": "http://thumb-url.jpg"
       }, ... ]
     }
+```
