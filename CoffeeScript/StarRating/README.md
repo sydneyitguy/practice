@@ -31,7 +31,7 @@ SCSS:
         height: 23px;
         margin-bottom: -4px;
         cursor: pointer;
-        background: url(../mini-site/star-ratings.png) no-repeat 0 -230px;
+        background: url(star-ratings.png) no-repeat 0 -230px;
       }
     }
 ```
