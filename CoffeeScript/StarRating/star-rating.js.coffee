@@ -7,23 +7,32 @@
     imgWidth: 125
     starHeight: 46
 
-  bindClick = ->
-    $cache.container.on "mousemove click", (e) ->
-      x = e.pageX - $(this).offset().left
-      y = e.pageY - $(this).offset().top
+  bind = ->
+    $cache.container.on "mousemove", (e) -> render(calculate(e))
+    $cache.container.on "mouseleave", (e) -> render(_currentStar, true)
+    $cache.container.on "click", (e) ->
+      star = calculate(e)
+      render(star, true)
+      setStar(star)
 
-      star = Math.ceil(x / (_config.imgWidth / 5))
-      setStar(star) if star != _currentStar
+  calculate = (evt) ->
+    x = evt.pageX - $cache.container.offset().left
+    y = evt.pageY - $cache.container.offset().top
+    Math.ceil(x / (_config.imgWidth / 5))
+
+  render = (star, force = false) ->
+    if star != _currentStar || force is true
+      position = '0 ' + _config.starHeight * (star - 5) + 'px'
+      $cache.container.css('background-position', position)
 
   setStar = (star) ->
-    position = '0 ' + _config.starHeight * (star - 5) + 'px'
-    $cache.container.css('background-position', position)
     _currentStar = star
     $cache.input.val(star)
 
+  set: (star) -> setStar(star)
   init: (id, config) ->
     $cache.elem = $(id)
     $cache.container = $cache.elem.find(config.container)
     $cache.input = $cache.elem.find(config.input)
-    bindClick()
+    bind()
 )()
