@@ -27,6 +27,7 @@
 
   setStar = (star) ->
     _currentStar = star
+    render(star, true)
     $cache.input.val(star)
 
   set: (star) -> setStar(star)
