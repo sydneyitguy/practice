@@ -1,5 +1,5 @@
-# Comparison of Car Share Services in Australia
+# Facebook Friends Statistics
 
 Demo / Full source code available on:
 
-http://sydneyitguy.com.au/app/friendstat/
+http://sydneyitguy.com/app/friendstat/

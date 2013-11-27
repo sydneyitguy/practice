@@ -1,5 +1,5 @@
-# Comparison of Car Share Services in Australia
+# Incometax Calculator
 
 Demo / Full source code available on:
 
-http://sydneyitguy.com.au/app/incometax/
+http://sydneyitguy.com/app/incometax/

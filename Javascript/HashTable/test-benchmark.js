@@ -22,7 +22,7 @@ test( "Hash table test", function() {
  * -------------------------------------------------- */
 Benchmark.STDOUT = document.getElementById('benchmark');
 
-var COUNT = 1000;
+var COUNT = 100000;
 
 function testWith(bucket) {
   var list = new HashTable(bucket);

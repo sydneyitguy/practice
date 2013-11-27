@@ -2,4 +2,4 @@
 
 Demo / Full source code available on:
 
-http://sydneyitguy.com.au/app/car-share-rate/
+http://sydneyitguy.com/app/car-share-rate/
