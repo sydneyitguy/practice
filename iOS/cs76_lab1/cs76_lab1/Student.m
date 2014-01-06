@@ -16,7 +16,7 @@
     self.grades = [[NSMutableDictionary alloc] init];
 
     return self;
-}
+} 
 
 + (NSArray *)validMajors {
     NSArray *majors = [[NSArray alloc] initWithObjects:@"Math", @"English", @"Computer Science", @"Undeclared", nil];

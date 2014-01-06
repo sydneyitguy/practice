@@ -1,2 +1,10 @@
+#Sublime
 .project
-.DS_Store
+
+# OSX
+profile
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
