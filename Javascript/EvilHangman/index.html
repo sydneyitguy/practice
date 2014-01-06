@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Evil Hangman</title>
+
+    <style type="text/css">
+      body { text-align: center; }
+      body, input, button { font-family: Helvetica, Arial, Verdana, sans-serif; font-size: 25px; color: #333;}
+      div { margin: 20px 0; }
+      .progress { letter-spacing: 10px; }
+      .input { height: 40px; width: 80px; }
+      button { cursor: pointer; background-color:#eee; border:0; padding: 15px 25px; }
+    </style>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="lookup-table.js"></script>
+    <script src="words.js"></script>
+
+    <script>
+      console = { log: function() { } }; // Disable console.log
+
+      Game = {
+        play: function(wordLength, maxGuess) {
+          LookupTable.init(wordLength, maxGuess);
+
+          var $status = $('#status')
+            , $history = $('#history')
+            , $progress = $('#progress')
+            , $input = $('#input')
+            , $leftCount = $('#left-count');
+
+          // Reset
+          $status.text('');
+          $progress.text(Array(wordLength + 1).join("_"));
+          $input.removeAttr('disabled');
+
+          $input.unbind().keyup(function() {
+            var $this = $(this);
+            var letter = $this.val().toUpperCase();
+            var output = LookupTable.playALetter(letter);
+
+            switch(output) {
+              case '#INVALID':
+                $status.text("Invalid input: '" + letter + "'").show();
+                break;
+
+              case '#USED':
+                $status.text("You have already used " + letter).show();
+                break;
+
+              case '#WON':
+                $status.text('You Won! LOL');
+                $progress.text(LookupTable.getPrevOutput());
+                $this.attr('disabled', 'disabled');
+                break;
+
+              case '#LOST':
+                $status.text('Game Over! OTL');
+                $this.attr('disabled', 'disabled');
+                break;
+
+              default:
+                $history.text('Used letters: ' + LookupTable.getHistory());
+                $progress.text(output);
+                break;
+            }
+
+            $this.val('');
+            $leftCount.text('You have ' + LookupTable.getLeftChance() + ' guesses left');
+          });
+
+          $leftCount.text('You have ' + LookupTable.getLeftChance() + ' guesses left');
+          $input.focus();
+        },
+
+        init: function() {
+          var wordLength = 4, maxGuess = 24;
+
+          $('#new-game').click(function() {
+            Game.play(wordLength, maxGuess);
+          });
+
+          Game.play(wordLength, maxGuess);
+        }
+      };
+
+      $(function() {
+        Game.init();
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Evil Hangman</h1>
+
+    <div id="progress" class="progress"></div>
+    <input type="text" id="input" class="input" maxlength="1" />
+    <span id="status" class="status"></span>
+    <div id="history" class="history"></div>
+    <div id="left-count" class="left-count"></div>
+
+    <button id="new-game" class="new-game">New Game</button>
+  </body>
+</html>
