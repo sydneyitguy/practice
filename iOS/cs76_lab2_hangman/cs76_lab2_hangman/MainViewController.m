@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "LookupTable.h"
 
 @interface MainViewController ()
 
@@ -17,13 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    // Demonstrate opening a plist and loading the contents
-    NSString *fileWithPath = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"plist"];
-    NSMutableArray *words = [[NSMutableArray alloc] initWithContentsOfFile:fileWithPath];
     
-    // Log the first work in the list
-    NSLog(@"%@", [words objectAtIndex:0]);
+    LookupTable *lookupTable = [[LookupTable alloc] init];
     
     // Configure the properties of the UILabel
     self.textLabel.text = @"";

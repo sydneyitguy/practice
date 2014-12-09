@@ -21,6 +21,7 @@
 		961A5D8C187A271A00ED0A88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961A5D68187A271900ED0A88 /* Foundation.framework */; };
 		961A5D8D187A271A00ED0A88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961A5D6C187A271900ED0A88 /* UIKit.framework */; };
 		961A5DA1187A414A00ED0A88 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = 961A5DA0187A414A00ED0A88 /* words.plist */; };
+		961A5DA4187A60CA00ED0A88 /* LookupTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 961A5DA3187A60CA00ED0A88 /* LookupTable.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		961A5D89187A271A00ED0A88 /* cs76_lab2_hangmanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cs76_lab2_hangmanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		961A5D8A187A271A00ED0A88 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		961A5DA0187A414A00ED0A88 /* words.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = words.plist; sourceTree = "<group>"; };
+		961A5DA2187A60CA00ED0A88 /* LookupTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookupTable.h; sourceTree = "<group>"; };
+		961A5DA3187A60CA00ED0A88 /* LookupTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookupTable.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				961A5D7E187A271A00ED0A88 /* MainViewController.m */,
 				961A5D80187A271A00ED0A88 /* FlipsideViewController.h */,
 				961A5D81187A271A00ED0A88 /* FlipsideViewController.m */,
+				961A5DA2187A60CA00ED0A88 /* LookupTable.h */,
+				961A5DA3187A60CA00ED0A88 /* LookupTable.m */,
 				961A5D83187A271A00ED0A88 /* Images.xcassets */,
 				961A5D6F187A271900ED0A88 /* Supporting Files */,
 			);
@@ -236,6 +241,7 @@
 				961A5D79187A271900ED0A88 /* AppDelegate.m in Sources */,
 				961A5D7F187A271A00ED0A88 /* MainViewController.m in Sources */,
 				961A5D82187A271A00ED0A88 /* FlipsideViewController.m in Sources */,
+				961A5DA4187A60CA00ED0A88 /* LookupTable.m in Sources */,
 				961A5D75187A271900ED0A88 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
