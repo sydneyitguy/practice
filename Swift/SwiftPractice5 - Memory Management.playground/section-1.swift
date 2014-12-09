@@ -21,10 +21,10 @@ apts[507] = nil
 // result in dangling references "home" and "tenant" are pointing each other
 
 class Apartment2 {
-    var tenant: Person2?
+    weak var tenant: Person2?
 }
 class Person2 {
-    var home: Apartment2?
+    weak var home: Apartment2?
     
     func moveIn(apt: Apartment2) {
         self.home = apt
