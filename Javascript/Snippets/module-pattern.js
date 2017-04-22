@@ -2,7 +2,7 @@ var class_name = (function() {
   var private_vars;
 
   // Privates
-  a_private = function() {
+  var a_private = function() {
     console.log('from private')
   };
 
